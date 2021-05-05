@@ -5,12 +5,11 @@ export class Column {
 
     add(playerNum) {
     this.tokens.push(playerNum);
-
     }
 
     getTokenAtRow(rowIdxNum){
-        let el = this.tokens[rowIdxNum];
-        el ? el: null;
+        let el = this.tokens[5 - rowIdxNum];
+        return el ? el: null;
     }
 
 

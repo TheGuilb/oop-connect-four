@@ -19,10 +19,30 @@ import {Game} from "./game.js"
                 clickTarget.removeAttribute("black");
                 clickTarget.setAttribute("class", "red");
             }
+
+        for (let i = 0; i < 6; i++) {
+            for (let j = 0; j < 7; j++) {
+                let boxSquare = document.getElementById(`square-${i}-${j}`);
+                let tokeN = game.getTokenAtCol(i, j);
+                console.log(tokeN, "<----- this is tokeN");
+                boxSquare.innerHTML = "";
+                if (tokeN === 1) {
+                    let blackDiv = document.createElement("div");
+                    blackDiv.classList.add("token", "black");
+                    boxSquare.appendChild(blackDiv);
+
+                } else if (tokeN === 2) {
+                    let redDiv = document.createElement("div");
+                    redDiv.classList.add("token", "red");
+                    boxSquare.appendChild(redDiv);
+
+                }
+            }
+        }
     }
 
     window.addEventListener('DOMContentLoaded', event => {
-    
+
 
     const newGameButton = document.getElementById('new-game');
     const player1 = document.getElementById('player-1-name');
@@ -53,20 +73,7 @@ import {Game} from "./game.js"
         if (targetId.startsWith('column-')) {
             let targetNum = Number.parseInt(targetId[targetId.length -1]);
                 game.playInColumn(targetNum);
-
             }
             updateUI();
     });
-
-
-
-
-
-
-
-
-
-
-
 })
-// Future problems for after lunch Andru and after lunch Pierre.
