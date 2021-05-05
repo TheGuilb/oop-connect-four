@@ -50,8 +50,8 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
     clickTarget.addEventListener("click", event => {
-        Game.playInColumn();
-        console.log(currentPlayer.value)
+        game.playInColumn();
+        // console.log(currentPlayer.value)
         updateUI();
     });
 
