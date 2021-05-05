@@ -21,9 +21,8 @@ import {Game} from "./game.js"
             }
     }
 
-    // console.log(Game);
-    // console.log(game);
-window.addEventListener('DOMContentLoaded', event => {
+    window.addEventListener('DOMContentLoaded', event => {
+    
 
     const newGameButton = document.getElementById('new-game');
     const player1 = document.getElementById('player-1-name');
@@ -50,9 +49,13 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
     clickTarget.addEventListener("click", event => {
-        game.playInColumn();
-        // console.log(currentPlayer.value)
-        updateUI();
+            const targetId = event.target.id;
+        if (targetId.startsWith('column-')) {
+            let targetNum = Number.parseInt(targetId[targetId.length -1]);
+                game.playInColumn(targetNum);
+
+            }
+            updateUI();
     });
 
 
