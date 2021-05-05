@@ -5,7 +5,8 @@ export class Game {
         this.player1 = player1
         this.player2 = player2
         this.currentPlayer = 1;
-        this.columns = Array(7).fill(new Column());
+        this.columns = [new Column(), new Column(), new Column(),
+                       new Column(), new Column(), new Column(), new Column()];
         // console.table(this.columns)
     }
 
