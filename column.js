@@ -4,7 +4,13 @@ export class Column {
     }
 
     add(playerNum) {
-    this.tokens.push(playerNum);
+        // if (this.tokens.length !== 6) {
+            this.tokens.push(playerNum)
+        // }
+    }
+
+    isFull() {
+        if (this.tokens.length === 6) return true;
     }
 
     getTokenAtRow(rowIdxNum){

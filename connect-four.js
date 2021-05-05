@@ -1,3 +1,4 @@
+import { Column } from "./column.js";
 import {Game} from "./game.js"
 
     let game = undefined;
@@ -6,6 +7,25 @@ import {Game} from "./game.js"
 
     function updateUI() {
         let boardHolder = document.getElementById("board-holder");
+
+        function isColumnFull(columnIdx) {
+            console.log(columnIdx)
+            game.coulumns[columnIdx]
+        //FIX WHATEVER THIS IS ^^ 🤮
+        }
+
+        for (let i = 0; i <= 6; i++) {
+            const el = document.getElementById(`column-${i}`);
+            if (isColumnFull(el)) {
+                el.classList.add('full');
+                console.log('true', `${i}`)
+            } else {
+                el.classList.remove('full');
+                console.log('flase', `${i}`)
+            }
+
+        }
+
         if (game === undefined) {
             boardHolder.setAttribute("class", "is-invisible")
         } else {
@@ -24,7 +44,6 @@ import {Game} from "./game.js"
             for (let j = 0; j < 7; j++) {
                 let boxSquare = document.getElementById(`square-${i}-${j}`);
                 let tokeN = game.getTokenAtCol(i, j);
-                console.log(tokeN, "<----- this is tokeN");
                 boxSquare.innerHTML = "";
                 if (tokeN === 1) {
                     let blackDiv = document.createElement("div");

@@ -7,7 +7,6 @@ export class Game {
         this.currentPlayer = 1;
         this.columns = [new Column(), new Column(), new Column(),
                        new Column(), new Column(), new Column(), new Column()];
-        // console.table(this.columns)
     }
 
     getName() {
@@ -17,9 +16,7 @@ export class Game {
 
     playInColumn(columnIdx) {
         let currentColumn = this.columns[columnIdx];
-        console.log(currentColumn, "<--- This is colmfsnhnokg");
         currentColumn.add(this.currentPlayer);
-        console.log(currentColumn, "now column is here");
         this.currentPlayer === 1 ? this.currentPlayer = 2 : this.currentPlayer = 1;
     }
 
