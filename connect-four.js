@@ -9,21 +9,12 @@ import {Game} from "./game.js"
         let boardHolder = document.getElementById("board-holder");
 
         function isColumnFull(columnIdx) {
-            console.log(columnIdx)
-            game.coulumns[columnIdx]
-        //FIX WHATEVER THIS IS ^^ 🤮
+            return game.columns[columnIdx].isFull();
         }
 
         for (let i = 0; i <= 6; i++) {
             const el = document.getElementById(`column-${i}`);
-            if (isColumnFull(el)) {
-                el.classList.add('full');
-                console.log('true', `${i}`)
-            } else {
-                el.classList.remove('full');
-                console.log('flase', `${i}`)
-            }
-
+            isColumnFull(i) ? el.classList.add('full') : el.classList.remove('full');
         }
 
         if (game === undefined) {
