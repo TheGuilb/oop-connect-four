@@ -4,8 +4,8 @@ export class ColumnWinInspector {
     }
 
     inspect() {
-       if (this.column.tokens.join("").includes("1111")) return 1;
-       if (this.column.tokens.join("").includes("2222")) return 2;
+       if (this.column.join('').includes("1111")) return 1;
+       if (this.column.join('').includes("2222")) return 2;
        return 0;
     }
 }

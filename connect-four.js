@@ -9,20 +9,24 @@ import {Game} from "./game.js"
         let boardHolder = document.getElementById("board-holder");
 
         function isColumnFull(columnIdx) {
+            console.log(game.winnerNumber)
+            if (game.winnerNumber === 1 || game.winnerNumber === 2) {
+                return true;
+            }
+
             return game.columns[columnIdx].isFull();
         }
 
         for (let i = 0; i <= 6; i++) {
             const el = document.getElementById(`column-${i}`);
             isColumnFull(i) ? el.classList.add('full') : el.classList.remove('full');
+
         }
 
         if (game === undefined) {
             boardHolder.setAttribute("class", "is-invisible")
         } else {
             boardHolder.classList.remove("is-invisible");
-            game.checkForTie();
-            game.checkForColumnWin();
             gameName.innerHTML = game.getName();
         }
             if (game.currentPlayer === 1) {
@@ -83,10 +87,14 @@ import {Game} from "./game.js"
 
     clickTarget.addEventListener("click", event => {
             const targetId = event.target.id;
-        if (targetId.startsWith('column-')) {
             let targetNum = Number.parseInt(targetId[targetId.length -1]);
-                game.playInColumn(targetNum);
-            }
-            updateUI();
+        if (targetId.startsWith('column-')) {
+            game.playInColumn(targetNum);
+        }
+        game.checkForTie();
+        game.checkForColumnWin(targetNum);
+        game.checkForRowWin();
+        updateUI();
     });
+    
 })
