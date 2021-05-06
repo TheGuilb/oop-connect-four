@@ -58,6 +58,7 @@ import {Game} from "./game.js"
     const player1 = document.getElementById('player-1-name');
     const player2 = document.getElementById('player-2-name');
 
+    
 
     function whoIs(player) {
         player.addEventListener('keyup', event => {
