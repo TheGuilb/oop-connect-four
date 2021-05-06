@@ -33,7 +33,6 @@ export class Game {
     }
 
     checkForColumnWin(idx) {
-
             const column = this.columns[idx].tokens;
             const newColumnWinInspected =  new ColumnWinInspector(column);
             this.winnerNumber = newColumnWinInspected.inspect();

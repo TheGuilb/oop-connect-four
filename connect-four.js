@@ -9,7 +9,6 @@ import {Game} from "./game.js"
         let boardHolder = document.getElementById("board-holder");
 
         function isColumnFull(columnIdx) {
-            console.log(game.winnerNumber)
             if (game.winnerNumber === 1 || game.winnerNumber === 2) {
                 return true;
             }
@@ -96,5 +95,5 @@ import {Game} from "./game.js"
         game.checkForRowWin();
         updateUI();
     });
-    
+
 })
