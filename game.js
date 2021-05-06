@@ -1,6 +1,7 @@
 import { Column } from "./column.js";
 import { ColumnWinInspector } from "./column-win-inspector.js";
 import {RowWinInspector} from "./row-win-inspector.js";
+import { DiagChecker } from "./diagonal-win-inspect.js"
 export class Game {
     constructor(player1, player2){
         this.player1 = player1
@@ -43,6 +44,11 @@ export class Game {
             const newRowInspector = new RowWinInspector(this.columns);
             this.winnerNumber = newRowInspector.inspectorGadget();
         }
+    }
+
+    checkForDiagWin() {
+       const whut = new DiagChecker(this.columns);
+       this.winnerNumbermber = whut.inspectorDiag();
     }
 
     getTokenAtCol(rowIdx, columnIdx) {

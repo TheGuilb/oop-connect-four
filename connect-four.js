@@ -93,6 +93,7 @@ import {Game} from "./game.js"
         game.checkForTie();
         game.checkForColumnWin(targetNum);
         game.checkForRowWin();
+        game.checkForDiagWin();
         updateUI();
     });
 
