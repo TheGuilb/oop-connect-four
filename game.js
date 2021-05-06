@@ -1,4 +1,5 @@
 import { Column } from "./column.js";
+import { ColumnWinInspector } from "./column-win-inspector.js";
 
 export class Game {
     constructor(player1, player2){
@@ -11,32 +12,39 @@ export class Game {
     }
 
     getName() {
+        if (this.winnerNumber === 1) return `${this.player1} HAS WON!`
+        if (this.winnerNumber === 2) return `${this.player2} HAS WON!`
         if (this.winnerNumber === 3) return `${this.player1} TIES WITH ${this.player2}`
-        return `${this.player1} VS ${this.player2}`;
+        else return `${this.player1} VS ${this.player2}`;
     }
 
     playInColumn(columnIdx) {
         let currentColumn = this.columns[columnIdx];
         currentColumn.add(this.currentPlayer);
         this.currentPlayer === 1 ? this.currentPlayer = 2 : this.currentPlayer = 1;
-        this.checkForTie()
     }
 
     checkForTie() {
-
-        // const fullColumns = this.columns.filter(el => {
-        //     isFull(el);
-        // })
-
-        // if (fullColumns.length === 7) this.winnerNumber = 3;
-
         const fullClass = document.querySelectorAll('.full');
-        console.log(fullClass.length)
         if (fullClass.length === 7) {
             this.winnerNumber = 3;
-
         }
+    }
 
+    checkForColumnWin() {
+        for (let i = 0; i < this.columns.length; i++) {
+            const column = this.columns[i];
+            const newColumnWinInspected =  new ColumnWinInspector(column);
+            let winnerNumber = newColumnWinInspected.inspect();
+            this.winnerNumber = winnerNumber
+            // console.log(this.winnerNumber);
+            // if (newColumnWinInspected.inspect() === 1) {
+            //     this.winnerNumber = 1;
+            // };
+            // if (newColumnWinInspected.inspect() === 2) {
+            //     this.winnerNumber = 2;
+            // };
+        }
     }
 
     getTokenAtCol(rowIdx, columnIdx) {

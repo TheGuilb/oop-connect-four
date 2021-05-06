@@ -21,6 +21,8 @@ import {Game} from "./game.js"
             boardHolder.setAttribute("class", "is-invisible")
         } else {
             boardHolder.classList.remove("is-invisible");
+            game.checkForTie();
+            game.checkForColumnWin();
             gameName.innerHTML = game.getName();
         }
             if (game.currentPlayer === 1) {
@@ -58,7 +60,7 @@ import {Game} from "./game.js"
     const player1 = document.getElementById('player-1-name');
     const player2 = document.getElementById('player-2-name');
 
-    
+
 
     function whoIs(player) {
         player.addEventListener('keyup', event => {
