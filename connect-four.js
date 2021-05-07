@@ -86,7 +86,8 @@ import {Game} from "./game.js"
 
     clickTarget.addEventListener("click", event => {
             const targetId = event.target.id;
-            let targetNum = Number.parseInt(targetId[targetId.length -1]);
+            let targetNum = Number.parseInt(targetId[targetId.length - 1]);
+        // if (!targetNum) return;
         if (targetId.startsWith('column-')) {
             game.playInColumn(targetNum);
         }
